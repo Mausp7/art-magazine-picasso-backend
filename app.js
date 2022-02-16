@@ -39,6 +39,37 @@ app.get('/api/user/:id', (req, res) => {
     });
 });
 
+app.post('/api/user/:id', (req, res) => {
+    fs.readFile('data/users.json', 'utf8', (err, data) => {
+        if (err) res.sendStatus(500);
+
+        const userID = Number(req.params.id);
+        if (!userID || userID < 1) return res.sendStatus(400);
+
+        const DB = JSON.parse(data);
+        const user = DB.find(user => user.id === userID)
+        if (!user) return res.sendStatus(404);
+
+        if (!req.body.artist || !req.body.title || !req.body.url) return res.sendStatus(400);
+
+        if (user.collection.find((art) => art.title === req.body.title) || user.collection.find((art) => art.url === req.body.url)) return res.sendStatus(409);
+
+        const newCollection = {
+            artist: req.body.artist,
+            title: req.body.title,
+            url: req.body.url,
+            tags: req.body.tags ? req.body.tags : [],
+            rating: Number(req.body.rating) < 6 && Number(req.body.rating) > -1  ? Number(req.body.rating) : 0,
+            description: req.body.description ? req.body.description : ""
+        };
+
+        user.collection.push(newCollection);
+        fs.writeFileSync('data/users.json', JSON.stringify(DB, null, 4),'utf8')
+
+        return res.json(user.collection);
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)

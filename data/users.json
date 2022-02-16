@@ -8,8 +8,8 @@
             {
                 "artist": "Pablo Picasso",
                 "title": "Guernica",
-                "url":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mural_del_Gernika.jpg/1024px-Mural_del_Gernika.jpg",
-                "tags":[
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mural_del_Gernika.jpg/1024px-Mural_del_Gernika.jpg",
+                "tags": [
                     "cubism",
                     "surrealism"
                 ],
@@ -19,15 +19,14 @@
             {
                 "artist": "Salvador Dalí",
                 "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
-                "url":  "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
-                "tags":[
+                "url": "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
+                "tags": [
                     "allegorical",
                     "surrealism"
                 ],
                 "rating": 4,
                 "description": "For my research."
             }
-
         ]
     },
     {
@@ -39,8 +38,8 @@
             {
                 "artist": "Pablo Picasso",
                 "title": "Guernica",
-                "url":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mural_del_Gernika.jpg/1024px-Mural_del_Gernika.jpg",
-                "tags":[
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mural_del_Gernika.jpg/1024px-Mural_del_Gernika.jpg",
+                "tags": [
                     "cubism",
                     "surrealism"
                 ],
@@ -50,8 +49,8 @@
             {
                 "artist": "Salvador Dalí",
                 "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
-                "url":  "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
-                "tags":[
+                "url": "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
+                "tags": [
                     "allegorical",
                     "surrealism"
                 ],
