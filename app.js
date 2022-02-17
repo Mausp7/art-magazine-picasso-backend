@@ -70,6 +70,41 @@ app.post('/api/user/:id', (req, res) => {
     });
 });
 
+app.delete('/api/user/:id', (req, res) => {
+    fs.readFile('data/users.json', 'utf8', (err, data) => {
+        if (err) res.sendStatus(500);
+
+        if (!req.query.url && !req.query.title) return res.sendStatus(400);
+
+        const userID = Number(req.params.id);
+        if (!userID || userID < 1) return res.sendStatus(400);
+
+        const DB = JSON.parse(data);
+        const user = DB.find(user => user.id === userID)
+        if (!user) return res.sendStatus(404);
+
+        user.collection = user.collection.filter(art => art.url !== req.query.url && art.title !== req.query.title);
+        fs.writeFileSync('data/users.json', JSON.stringify(DB, null, 4),'utf8')
+        return res.json(user.collection);
+    });
+});
+
+app.delete('/api/users/:id', (req, res) => {
+    fs.readFile('data/users.json', 'utf8', (err, data) => {
+        if (err) res.sendStatus(500);
+
+        const userID = Number(req.params.id);
+        if (!userID || userID < 1) return res.sendStatus(400);
+        
+        let DB = JSON.parse(data);
+        if (!DB.find(user => user.id === userID)) return res.sendStatus(404);
+
+        DB = DB.filter(user => user.id !== userID)
+        fs.writeFileSync('data/users.json', JSON.stringify(DB, null, 4),'utf8')
+        return res.sendStatus(200);
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
