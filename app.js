@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const fs = require("fs")
+const fs = require("fs");
+const saveTempImage = require("./store-image");
 
 app.use(cors());
 app.use(express.json());
@@ -94,6 +95,8 @@ app.post('/api/user/:id', (req, res) => { // Endpoint posting an artpiece into a
         if (!req.body.artist || !req.body.title || !req.body.url) return res.sendStatus(400);
 
         if (user.collection.find((art) => art.title === req.body.title) || user.collection.find((art) => art.url === req.body.url)) return res.sendStatus(409);
+
+        saveTempImage(req.body.url, `./temp/temp`);
 
         const newCollection = {
             artist: req.body.artist,
