@@ -30,7 +30,7 @@ app.get('/api/users', (req, res) => { // Endpoint returning all users.
     });
 });
 
-app.post('/api/user/signup', (req, res) => { // Endpoint to register a new user.
+app.post('/api/user', (req, res) => { // Endpoint to register a new user.
     if (!req.body.username || !req.body.password) return res.sendStatus(400);
     
     fs.readFile('data/users.json', 'utf8', (err, data) => {
@@ -53,7 +53,7 @@ app.post('/api/user/signup', (req, res) => { // Endpoint to register a new user.
     });
 });
 
-app.get('/api/user/login', (req, res) => { // Endpoint to validate an existing user.
+app.get('/api/user', (req, res) => { // Endpoint to validate an existing user.
     if (!req.header("Authorization")) return res.sendStatus(400);
 
     const authHeader = JSON.parse(req.header("Authorization"));
@@ -76,7 +76,7 @@ app.get('/api/user/login', (req, res) => { // Endpoint to validate an existing u
     });
 });
 
-app.delete('/api/user/delete', (req, res) => { // Endpoint to delete a specific user.
+app.delete('/api/user', (req, res) => { // Endpoint to delete a specific user.
     if (!req.header("Authorization")) return res.sendStatus(400);
 
     const sessionId = JSON.parse(req.header("Authorization"));
