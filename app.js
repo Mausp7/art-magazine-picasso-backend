@@ -63,6 +63,21 @@ app.get('/api/user/login', (req, res) => { // Endpoint to validate an existing u
     });
 });
 
+app.get('/api/user/:id', (req, res) => { // Endpoint to get user collection.
+    const userID = Number(req.params.id);
+    if (!userID || userID < 1) return res.sendStatus(400);
+
+    fs.readFile('data/users.json', 'utf8', (err, data) => {
+        if (err) res.sendStatus(500);
+
+        const DB = JSON.parse(data);
+        const user = DB.find((user) => user.id === userID);
+        if (!user) return res.sendStatus(401);
+
+        return res.json(user);
+    });
+});
+
 app.delete('/api/users/:id', (req, res) => { // Endpoint to delete a specific user.
     const userID = Number(req.params.id);
     if (!userID || userID < 1) return res.sendStatus(400);
