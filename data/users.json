@@ -27,5 +27,11 @@
                 "description": "I like thisone."
             }
         ]
+    },
+    {
+        "id": 2,
+        "username": "Aron",
+        "password": "passmeabeer",
+        "collection": []
     }
 ]

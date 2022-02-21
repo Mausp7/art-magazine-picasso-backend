@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const port = 5000;
+const activeSessions = {};
 
 
 app.get('/', (req, res) => {
@@ -15,6 +16,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/users', (req, res) => { // Endpoint returning all users.
+    if (!req.header("Authorization")) return res.sendStatus(400);
+
+    const authHeader = JSON.parse(req.header("Authorization"));
+    if (!authHeader.username || !authHeader.password) return res.sendStatus(400);
+    if (authHeader.username !== "admin"|| authHeader.password !== "admin") return res.sendStatus(401);
+
     fs.readFile('data/users.json', 'utf8', (err, data) => {
         if (err) res.sendStatus(500);
 
@@ -59,7 +66,13 @@ app.get('/api/user/login', (req, res) => { // Endpoint to validate an existing u
         const user = DB.find((user) => user.username === authHeader.username && user.password === authHeader.password);
         if (!user) return res.sendStatus(401);
 
-        return res.json(user);
+        const sessionId = Math.floor(Math.random() * 10000000).toString();
+        activeSessions[sessionId] = {username: user.username, password: user.password};
+        setTimeout(() => {
+            delete activeSessions[sessionId]
+        }, 24*60*60*1000);
+
+        return res.json(sessionId);
     });
 });
 
