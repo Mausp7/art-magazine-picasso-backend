@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const fs = require("fs");
+const crypto = require("crypto");
 const saveTempImage = require("./store-image");
 
 app.use(cors());
@@ -66,7 +67,7 @@ app.get('/api/user', (req, res) => { // Endpoint to validate an existing user.
         const user = DB.find(user => user.username === authHeader.username && user.password === authHeader.password);
         if (!user) return res.sendStatus(401);
 
-        const sessionId = Math.floor(Math.random() * 10000000).toString();
+        const sessionId = crypto.randomBytes(64).toString('hex');
         activeSessions[sessionId] = {username: user.username, password: user.password};
         setTimeout(() => {
             delete activeSessions[sessionId]
