@@ -11,7 +11,7 @@ const saveTempImage = async (url, filepath) => {
     const extension = url.split(".")[url.split(".").length - 1];
 
     return new Promise((resolve, reject) => {
-        response.data.pipe(fs.createWriteStream(`${filepath}.${extension ? extension : null}`))
+        response.data.pipe(fs.createWriteStream(`${filepath}.${extension ?? null}`))
             .on('error', reject)
             .once('close', () => resolve(filepath)); 
     });
