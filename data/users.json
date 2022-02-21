@@ -24,7 +24,7 @@
                     "surrealism"
                 ],
                 "rating": 4,
-                "description": "I like thisone."
+                "description": "For my research."
             }
         ]
     },
@@ -32,6 +32,19 @@
         "id": 2,
         "username": "Aron",
         "password": "passmeabeer",
-        "collection": []
+        "collection": [
+            {
+                "artist": "Salvador Dalí",
+                "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
+                "url": "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
+                "tags": [
+                    "allegorical",
+                    "surrealism",
+                    "jeee"
+                ],
+                "rating": 3,
+                "description": "egyéb."
+            }
+        ]
     }
 ]
