@@ -17,16 +17,19 @@ const saveTempImage = async (url, filepath) => {
     });
 };
 
-const storeImage = async (scourceUrl, filepath, destinationUrl) => {
+const storeImage = async (scourceUrl, filepath, destinationUrl="http://localhost:8080/images/categoryname") => {
     await saveTempImage(scourceUrl, filepath);
-    
-    const tempImage = fs.readFile(`${filepath}.${extension ?? null}`);
 
-    // const tempImage = fs.createReadStream(`${filepath}.${extension ?? null}`);
+    const extension = scourceUrl.split(".")[url.split(".").length - 1];
 
-    const response = await axios.post(destinationUrl, tempImage, {headers: {}});
+    const tempImage = fs.readFileSync(`${filepath}.${extension ?? null}`, { encoding: 'base64' });
+
+    const response = await axios.post(destinationUrl, {
+        "content": JSON.stringify(tempImage)
+    }, {headers: {}});
+
     console.log(response);
-    return response;
+    return response; //UUID
 };
 
 module.exports = {
