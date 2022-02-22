@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const fs = require("fs");
 const crypto = require("crypto");
-const saveTempImage = require("./store-image");
+const {saveTempImage} = require("./store-image");
 
 app.use(cors());
 app.use(express.json());

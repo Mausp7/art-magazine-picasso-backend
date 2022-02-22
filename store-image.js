@@ -17,12 +17,20 @@ const saveTempImage = async (url, filepath) => {
     });
 };
 
-const storeImage = async (filepath) => {
-    fs.readFile(filepath, async (err, data) => {
+const storeImage = async (scourceUrl, filepath, destinationUrl) => {
+    await saveTempImage(scourceUrl, filepath);
+    
+    const tempImage = fs.readFile(`${filepath}.${extension ?? null}`);
 
-    const response = await axios.post();
-    });
+    // const tempImage = fs.createReadStream(`${filepath}.${extension ?? null}`);
+
+    const response = await axios.post(destinationUrl, tempImage, {headers: {}});
+    console.log(response);
+    return response;
 };
 
-module.exports = saveTempImage
+module.exports = {
+    saveTempImage,
+    storeImage
+};
 
