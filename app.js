@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const port = 5000;
-const activeSessions = {"12345": {username: "JohnDoe", password: "f4hgv6beD5rHTf4h6FGfg4 "}};
+const activeSessions = {};
 
 
 app.get('/', (req, res) => {
@@ -80,7 +80,7 @@ app.get('/api/user', (req, res) => { // Endpoint to validate an existing user.
 app.delete('/api/user', (req, res) => { // Endpoint to delete a specific user.
     if (!req.header("Authorization")) return res.sendStatus(400);
 
-    const sessionId = JSON.parse(req.header("Authorization"));
+    const sessionId = req.header("Authorization").toString();
     if (!activeSessions[sessionId]) return res.sendStatus(401);
 
     const username = activeSessions[sessionId].username;
@@ -99,8 +99,8 @@ app.delete('/api/user', (req, res) => { // Endpoint to delete a specific user.
 
 app.get('/api/user/collection', (req, res) => { // Endpoint to get user collection.
     if (!req.header("Authorization")) return res.sendStatus(400);
-
-    const sessionId = JSON.parse(req.header("Authorization"));
+    
+    const sessionId = req.header("Authorization").toString();
     if (!activeSessions[sessionId]) return res.sendStatus(401);
 
     const username = activeSessions[sessionId].username;
@@ -118,8 +118,8 @@ app.get('/api/user/collection', (req, res) => { // Endpoint to get user collecti
 
 app.post('/api/user/collection', (req, res) => { // Endpoint posting an artpiece into a specific users collection.
     if (!req.header("Authorization")) return res.sendStatus(400);
-
-    const sessionId = JSON.parse(req.header("Authorization"));
+    
+    const sessionId = req.header("Authorization").toString();
     if (!activeSessions[sessionId]) return res.sendStatus(401);
 
     const username = activeSessions[sessionId].username;
@@ -157,7 +157,7 @@ app.put('/api/user/collection', (req, res) => { //Endpoint to update a specific 
 
     if (!req.header("Authorization")) return res.sendStatus(400);
     
-    const sessionId = JSON.parse(req.header("Authorization"));
+    const sessionId = req.header("Authorization").toString();
     if (!activeSessions[sessionId]) return res.sendStatus(401);
 
     const username = activeSessions[sessionId].username;
@@ -181,15 +181,14 @@ app.put('/api/user/collection', (req, res) => { //Endpoint to update a specific 
 });
 
 app.delete('/api/user/collection', (req, res) => { // Endpoint to delete a specific users artpiece by url or title.
-    if (!req.query.url && !req.query.title) return res.sendStatus(400);
+    if (!req.query.url) return res.sendStatus(400);
 
     if (!req.header("Authorization")) return res.sendStatus(400);
 
-    const sessionId = JSON.parse(req.header("Authorization"));
+    const sessionId = req.header("Authorization").toString();
     if (!activeSessions[sessionId]) return res.sendStatus(401);
 
     const username = activeSessions[sessionId].username;
-
     fs.readFile('data/users.json', 'utf8', (err, data) => {
         if (err) res.sendStatus(500);
 

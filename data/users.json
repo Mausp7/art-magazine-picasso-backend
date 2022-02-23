@@ -2,7 +2,7 @@
     {
         "id": 1,
         "username": "JohnDoe",
-        "password": "f4hgv6beD5rHTf4h6FGfg4 ",
+        "password": "12345",
         "collection": [
             {
                 "artist": "Pablo Picasso",
@@ -25,25 +25,6 @@
                 ],
                 "rating": 4,
                 "description": "For my research."
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "username": "Aron",
-        "password": "passmeabeer",
-        "collection": [
-            {
-                "artist": "Salvador Dalí",
-                "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
-                "url": "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
-                "tags": [
-                    "allegorical",
-                    "surrealism",
-                    "jeee"
-                ],
-                "rating": 3,
-                "description": "egyéb."
             }
         ]
     }
