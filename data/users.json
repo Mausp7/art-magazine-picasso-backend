@@ -5,26 +5,57 @@
         "password": "12345",
         "collection": [
             {
-                "artist": "Pablo Picasso",
-                "title": "Guernica",
-                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mural_del_Gernika.jpg/1024px-Mural_del_Gernika.jpg",
-                "tags": [
-                    "cubism",
-                    "surrealism"
-                ],
+                "artist": "Juan Gris\nSpanish",
+                "title": "Portrait of Pablo Picasso",
+                "url": "https://www.artic.edu/iiif/2/4f7ccf9f-a8ce-2bd8-2d15-a38b2e6caa7a/full/250,/0/default.jpg",
+                "date": "January–February 1912",
+                "tags": [],
                 "rating": 4,
-                "description": "A beautifull picture, means a lot."
+                "description": ""
             },
             {
-                "artist": "Salvador Dalí",
-                "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
-                "url": "https://a4.pbase.com/o4/93/329493/1/126106931.N6aKoSyz.pict0222.jpg",
+                "artist": "Salvador Dalí\nSpanish",
+                "title": "Inventions of the Monsters",
+                "url": "https://www.artic.edu/iiif/2/be9551d4-860f-37a0-1408-086617f1824e/full/250,/0/default.jpg",
+                "date": "1937",
+                "tags": [],
+                "rating": 5,
+                "description": ""
+            },
+            {
+                "artist": "Workshop of Hieronymus Bosch\nNetherlandish",
+                "title": "The Garden of Paradise",
+                "url": "https://www.artic.edu/iiif/2/3e82db48-5f93-ada3-7ab2-f97328ccc1bd/full/250,/0/default.jpg",
+                "date": "1500/20",
+                "tags": [],
+                "rating": 0,
+                "description": ""
+            },
+            {
+                "artist": "Robert Capa\nAmerican",
+                "title": "D-Day Invasion, Normandy",
+                "url": "https://www.artic.edu/iiif/2/0a4513e6-1565-811c-fdb3-e4c73ac51908/full/250,/0/default.jpg",
+                "date": "1944",
                 "tags": [
-                    "allegorical",
-                    "surrealism"
+                    "photo",
+                    "war",
+                    "black and white",
+                    "damaged"
                 ],
-                "rating": 4,
-                "description": "For my research."
+                "rating": 3,
+                "description": "photo"
+            },
+            {
+                "artist": "Ansel Adams\nAmerican",
+                "title": "Clearing Winter Storm, Yosemite National Park",
+                "url": "https://www.artic.edu/iiif/2/c89e854b-80a0-fc55-b681-208b91781316/full/250,/0/default.jpg",
+                "date": "c. 1937, printed 1959",
+                "tags": [
+                    "photo",
+                    "black and white,"
+                ],
+                "rating": 5,
+                "description": ""
             }
         ]
     }

@@ -141,6 +141,7 @@ app.post('/api/user/collection', (req, res) => { // Endpoint posting an artpiece
             artist: req.body.artist,
             title: req.body.title,
             url: req.body.url,
+            date: req.body.date ? req.body.date : "",
             tags: req.body.tags ? req.body.tags : [],
             rating: Number(req.body.rating) < 6 && Number(req.body.rating) > -1  ? Number(req.body.rating) : 0,
             description: req.body.description ? req.body.description : ""
